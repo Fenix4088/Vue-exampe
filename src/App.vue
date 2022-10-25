@@ -1,6 +1,10 @@
 <template>
   <div class="app">
-    <PostForm @create="createPost"/>
+    <h1>posts page</h1>
+    <Button @click="showDialog">Create a post</Button>
+    <Dialog v-model:show="dialogVisible">
+      <PostForm @create="createPost"/>
+    </Dialog>
     <PostsList :posts="posts" @delete-post="deletePost"/>
   </div>
 </template>
@@ -41,14 +45,19 @@ export default defineComponent({
           body: 'Some long long post body 3'
         }
       ],
+      dialogVisible: false
     }
   },
   methods: {
     createPost(newPost: Post) {
       this.posts.push(newPost)
+      this.dialogVisible = false
     },
     deletePost(id: number) {
       this.posts = this.posts.filter(post => post.id !== id)
+    },
+    showDialog() {
+      this.dialogVisible = true;
     }
   }
 });

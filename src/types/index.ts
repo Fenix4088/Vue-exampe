@@ -1,5 +1,6 @@
 export interface AppState {
     posts: Post[]
+    dialogVisible: boolean
 }
 
 export interface Post {

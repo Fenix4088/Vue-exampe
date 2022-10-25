@@ -1,8 +1,9 @@
 <template>
-  <div>
+  <div v-if="!!posts.length">
     <h4>List: </h4>
     <PostItem v-for="{title, body, id} in posts" :title="title" :body="body" :id="id" :key="id" @delete-post="$emit('delete-post', id)"/>
   </div>
+  <h2 v-else style="color: red; margin: 0 50%; width: max-content">No posts !</h2>
 </template>
 
 <script lang="ts">
@@ -25,10 +26,6 @@ export default defineComponent({
 </script>
 
 <style scoped>
-  .post {
-    margin-top: 15px;
-    padding: 15px;
-    border: 2px solid teal;
-  }
+
 
 </style>
