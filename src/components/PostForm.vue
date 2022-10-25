@@ -1,8 +1,8 @@
 <template>
   <form class="form" @submit.prevent="createPost">
     <h4>Create post:</h4>
-    <input v-model="newPost.title" class="input" type="text" placeholder="title">
-    <input v-model="newPost.body"  class="input" type="text" placeholder="description">
+    <Input v-model:value="newPost.title" v-model:myValue="newPost.title" placeholder="title"/>
+    <Input v-model:value="newPost.body" placeholder="description"/>
     <Button type="submit">Create</Button>
   </form>
 </template>
@@ -37,12 +37,5 @@ export default defineComponent({
 .form {
   display: flex;
   flex-flow: column nowrap;
-}
-
-.input {
-  width: 100%;
-  margin-bottom: 5px;
-  padding: 15px 10px;
-  border: 1px solid teal;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="app">
     <PostForm @create="createPost"/>
-    <PostsList :posts="posts"/>
+    <PostsList :posts="posts" @delete-post="deletePost"/>
   </div>
 </template>
 
@@ -46,6 +46,9 @@ export default defineComponent({
   methods: {
     createPost(newPost: Post) {
       this.posts.push(newPost)
+    },
+    deletePost(id: number) {
+      this.posts = this.posts.filter(post => post.id !== id)
     }
   }
 });

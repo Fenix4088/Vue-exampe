@@ -8,7 +8,7 @@
       <strong>Description: </strong>
       {{ body }}
     </div>
-    <Button>X</Button>
+    <Button @click="$emit('delete-post', id)">X</Button>
   </div>
 </template>
 
@@ -30,11 +30,6 @@ export default defineComponent({
       type: String,
       required: true
     },
-  },
-  methods: {
-    onDeleteClick() {
-      this.$emit('delete-post', this.$props.id)
-    }
   }
 })
 </script>

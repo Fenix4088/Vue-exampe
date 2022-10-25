@@ -1,7 +1,7 @@
 <template>
   <div>
     <h4>List: </h4>
-    <PostItem v-for="{title, body, id} in posts" :title="title" :body="body" :id="id"/>
+    <PostItem v-for="{title, body, id} in posts" :title="title" :body="body" :id="id" :key="id" @delete-post="$emit('delete-post', id)"/>
   </div>
 </template>
 
