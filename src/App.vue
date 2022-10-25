@@ -3,7 +3,10 @@
     <h1>Posts page</h1>
     <input type="text" v-model.trim="modificatorValue">
 
-    <Button @click="showDialog">Create a post</Button>
+    <div style="display: flex; width: 30%; flex-flow: column nowrap">
+      <Button @click="showDialog" style="margin-bottom: 10px">Create a post</Button>
+      <Select v-model="selectedSort" :options="sortOptions"/>
+    </div>
 
     <Dialog v-model:show="dialogVisible">
       <PostForm @create="createPost"/>
@@ -32,7 +35,12 @@ export default defineComponent({
       posts: [],
       dialogVisible: false,
       modificatorValue: '',
-      isPostsLoading: false
+      isPostsLoading: false,
+      selectedSort: '',
+      sortOptions: [
+        {value: 'title'},
+        {value: 'body'},
+      ]
     }
   },
   mounted() {
@@ -61,7 +69,7 @@ export default defineComponent({
     },
     showDialog() {
       this.dialogVisible = true;
-    }
+    },
   }
 });
 </script>

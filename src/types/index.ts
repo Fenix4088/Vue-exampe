@@ -3,6 +3,8 @@ export interface AppState {
     dialogVisible: boolean;
     modificatorValue: string;
     isPostsLoading: boolean;
+    selectedSort: string
+    sortOptions:  Option[]
 }
 
 export interface PostFormProps {
@@ -17,4 +19,8 @@ export interface Post {
     "id": number,
     "title": string,
     "body": string
+}
+
+export interface Option {
+    value: string
 }
