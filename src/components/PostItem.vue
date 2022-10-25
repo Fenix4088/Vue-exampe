@@ -8,6 +8,7 @@
       <strong>Description: </strong>
       {{ body }}
     </div>
+    <Button>X</Button>
   </div>
 </template>
 
@@ -17,6 +18,10 @@ import {defineComponent} from "vue";
 export default defineComponent({
   name: "PostItem",
   props: {
+    id: {
+      type: Number,
+      required: true
+    },
     title: {
       type: String,
       required: true
@@ -25,6 +30,11 @@ export default defineComponent({
       type: String,
       required: true
     },
+  },
+  methods: {
+    onDeleteClick() {
+      this.$emit('delete-post', this.$props.id)
+    }
   }
 })
 </script>

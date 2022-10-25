@@ -3,13 +3,13 @@
     <h4>Create post:</h4>
     <input v-model="newPost.title" class="input" type="text" placeholder="title">
     <input v-model="newPost.body"  class="input" type="text" placeholder="description">
-    <button type="submit">Create</button>
+    <Button type="submit">Create</Button>
   </form>
 </template>
 
 <script lang="ts">
-import {defineComponent, PropType} from "vue";
-import {Post, PostFormProps} from "@/types";
+import {defineComponent} from "vue";
+import {PostFormProps} from "@/types";
 
 export default defineComponent({
   data(): PostFormProps {

@@ -1,7 +1,7 @@
 <template>
   <div>
     <h4>List: </h4>
-    <PostItem v-for="{title, body} in posts" :title="title" :body="body"/>
+    <PostItem v-for="{title, body, id} in posts" :title="title" :body="body" :id="id"/>
   </div>
 </template>
 
