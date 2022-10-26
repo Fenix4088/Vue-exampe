@@ -13,7 +13,8 @@
     </Dialog>
 
     <div v-if="isPostsLoading">Loading Posts.... :-)</div>
-    <PostsList v-else :posts="posts" @delete-post="deletePost"/>
+<!--    <PostsList v-else :posts="posts" @delete-post="deletePost"/>-->
+    <PostsList v-else :posts="sortedPosts" @delete-post="deletePost"/>
   </div>
 </template>
 
@@ -36,19 +37,26 @@ export default defineComponent({
       dialogVisible: false,
       modificatorValue: '',
       isPostsLoading: false,
-      selectedSort: '',
+      selectedSort: 'title',
       sortOptions: [
         {value: 'title'},
         {value: 'body'},
       ]
     }
   },
-  watch: {
-    selectedSort(newValue: keyof Pick<Post, 'title' | 'body'>) {
-      this.posts.sort((p1, p2) => {
-        return (p1[newValue])?.localeCompare((p2[newValue]))
+  computed: {
+    sortedPosts(): Post[] {
+      return [...this.posts].sort((p1, p2) => {
+        return (p1[this.selectedSort])?.localeCompare((p2[this.selectedSort]))
       })
-    },
+    }
+  },
+  watch: {
+    // selectedSort(newValue: AppState['selectedSort']) {
+    //   this.posts.sort((p1, p2) => {
+    //     return (p1[newValue])?.localeCompare((p2[newValue]))
+    //   })
+    // },
     dialogVisible(newValue: boolean) {
       console.log(newValue)
     }

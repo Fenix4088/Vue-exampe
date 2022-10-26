@@ -3,7 +3,7 @@ export interface AppState {
   dialogVisible: boolean;
   modificatorValue: string;
   isPostsLoading: boolean;
-  selectedSort: string;
+  selectedSort: keyof Pick<Post, 'title' | 'body'>;
   sortOptions: Option[];
 }
 
