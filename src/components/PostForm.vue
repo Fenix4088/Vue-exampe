@@ -20,6 +20,14 @@ export default defineComponent({
       }
     }
   },
+  watch: {
+    newPost: {
+      handler(newValue) {
+        console.log(newValue)
+      },
+      deep: true
+    }
+  },
   methods: {
     createPost() {
       this.$emit('create', {id: Date.now(), title: this.newPost.title, body: this.newPost.body, a: ''})

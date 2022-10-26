@@ -43,6 +43,16 @@ export default defineComponent({
       ]
     }
   },
+  watch: {
+    selectedSort(newValue: keyof Pick<Post, 'title' | 'body'>) {
+      this.posts.sort((p1, p2) => {
+        return (p1[newValue])?.localeCompare((p2[newValue]))
+      })
+    },
+    dialogVisible(newValue: boolean) {
+      console.log(newValue)
+    }
+  },
   mounted() {
     this.fetchPosts()
   },
@@ -70,7 +80,8 @@ export default defineComponent({
     showDialog() {
       this.dialogVisible = true;
     },
-  }
+  },
+
 });
 </script>
 
